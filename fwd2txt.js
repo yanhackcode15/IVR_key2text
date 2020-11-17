@@ -43,6 +43,6 @@ app.use((err, req, res, next) => {
 })
 
 // Create an HTTP server and listen for requests on port 3000
-console.log('Twilio Client app HTTP server running at http://127.0.0.1');
+console.log('Twilio Client app HTTP server running at https://voice2txt.herokuapp.com/');
 app.listen(port);
 
