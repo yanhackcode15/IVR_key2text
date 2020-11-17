@@ -5,7 +5,7 @@
   "main": "fwd2txt.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node fwd2txt.js"
+    "start": "node fwd2txt"
   },
   "repository": {
     "type": "git",

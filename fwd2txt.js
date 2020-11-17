@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const voiceResponse = require('twilio').twiml.VoiceResponse;
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -39,5 +40,5 @@ function sendSms(caller, twilioNumber) {
 
 // Create an HTTP server and listen for requests on port 3000
 console.log('Twilio Client app HTTP server running at http://127.0.0.1');
-app.listen(process.env.PORT || 3000);
+app.listen(port);
 
