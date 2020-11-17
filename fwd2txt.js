@@ -22,12 +22,13 @@ function sendSms(caller, twilioNumber) {
   const accountSid = process.env.ACCOUNT_SID;
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
-
-  return client.messages.create({
+  const message = {
     body: "Book online at www.calendly.com/snipitsmonrovia (showing available slots for tomorrow and after). If you need to book for today, please call our main line. *This number doesn't currently respond to messages. ",
     from: twilioNumber,
     to: caller,
-  }).then()
+  };
+  console.log({message})
+  return client.messages.create(message).then()
     .catch(function(error) {
       if (error.code === 21614) {
         console.log("Uh oh, looks like this caller can't receive SMS messages.")
