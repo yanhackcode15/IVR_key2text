@@ -39,5 +39,5 @@ function sendSms(caller, twilioNumber) {
 
 // Create an HTTP server and listen for requests on port 3000
 console.log('Twilio Client app HTTP server running at http://127.0.0.1:80');
-app.listen(80);
+app.listen(process.env.PORT);
 
