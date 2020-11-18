@@ -14,7 +14,8 @@ app.all('/answer', (req, res) => {
   sendSms(caller, twilioNumber);
 
   const r = new voiceResponse();
-  r.say('Our online booking link has been sent. If you are calling from a landline, please hang up and call from a cell phone.');
+  // r.say('Our online booking link has been sent. If you are calling from a landline, please hang up and call from a cell phone.');
+  r.play({},'https://sepia-cobra-7528.twil.io/assets/link_sent.mp3');
   res.send(r.toString());
 });
 
