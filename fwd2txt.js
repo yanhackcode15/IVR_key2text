@@ -24,7 +24,7 @@ function sendSms(caller, twilioNumber) {
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const message = {
-    body: "Book online at www.calendly.com/snipitsmonrovia (showing available slots for tomorrow and after). If you need to book for today, please call our main line. *This number doesn't currently respond to messages. ",
+    body: "To help us serve you better, we encourage you to book for the next day and later. www.calendly.com/snipitsmonrovia. If you need to book for today, please call our main line. *This number doesn't currently respond to messages.",
     from: twilioNumber,
     to: caller,
   };
