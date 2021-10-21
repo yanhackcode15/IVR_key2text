@@ -24,7 +24,7 @@ function sendSms(caller, twilioNumber) {
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const message = {
-    body: "To help us serve you better, we encourage you to book for the next day and later. www.calendly.com/snipitsmonrovia. Upon booking, you will receive a confirmation email same day. *This number doesn't currently respond to messages.",
+    body: "We now offer both advanced and same day appts online. To book for a future date, please visit www.calendly.com/snipitsmonrovia. For same day appts, visit https://www.snipits.com/location/pasadena. *Questions? text us at (626)469-7790. Response time vary. Don't reply to this message.",
     from: twilioNumber,
     to: caller,
   };
