@@ -24,9 +24,9 @@ app.all('/forward', (req, res) => {
   const twilioNumber = req.body.To;
   forwardToZenoti(caller, twilioNumber);
 
-  // const q = new voiceResponse();
-  // q.play({},'https://sepia-cobra-7528.twil.io/assets/same%20day%20cancel%20recording.mp3');
-  // res.send(q.toString());
+  const q = new voiceResponse();
+  q.play({},'https://sepia-cobra-7528.twil.io/assets/same%20day%20cancel%20recording.mp3');
+  res.send(q.toString());
 });
 
 
