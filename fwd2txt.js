@@ -25,10 +25,9 @@ app.all('/forward', (req, res) => {
   const twilioNumber = req.body.To;
   forwardToZenoti(caller, twilioNumber);
 
-  const r = new voiceResponse();
-  // r.say('Our online booking link has been sent. If you are calling from a landline, please hang up and call from a cell phone.');
-  r.play({},'https://sepia-cobra-7528.twil.io/assets/same%20day%20cancel%20recording.mp3');
-  res.send(r.toString());
+  const q = new voiceResponse();
+  q.play({},'https://sepia-cobra-7528.twil.io/assets/same%20day%20cancel%20recording.mp3');
+  res.send(q.toString());
 });
 
 
@@ -55,7 +54,7 @@ function forwardToZenoti(caller, twilioNumber){
   const accountSid = process.env.ACCOUNT_SID;
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
-  
+
   const message = {
     body: "Cancelation request from customer phonenumber "+caller,
     from: twilioNumber,
