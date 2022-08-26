@@ -23,7 +23,6 @@ app.all('/forward', (req, res) => {
   const caller = req.body.From;
   const twilioNumber = req.body.To;
   forwardToZenoti(caller, twilioNumber);
-
 });
 
 
@@ -32,7 +31,7 @@ function sendSms(caller, twilioNumber) {
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const message = {
-    body: "From Snipits-Pasadena: To book for tomorrow and later: www.calendly.com/snipitsmonrovia. For today: https://www.snipits.com/location/pasadena. ** Appts might be very limited this week. Please only book if you can make it. To be waitlisted or other questions? text us at (626)469-7790.  **This number doesn't reply",
+    body: "From Snipits-Pasadena: To book for tomorrow and later: www.calendly.com/snipitspasadena. For today: https://www.snipits.com/location/pasadena. ** Don't reply to this number. Customer service - text us (626)469-7790",
     from: twilioNumber,
     to: caller,
   };
