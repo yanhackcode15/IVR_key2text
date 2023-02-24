@@ -31,7 +31,7 @@ function sendSms(caller, twilioNumber) {
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const message = {
-    body: "From Snipits-Pasadena: To book for tomorrow and later: https://calendly.com/snipitspasadena. For today: https://local.snipits.com/pasadena-ca ** Don't reply to this number. Customer service - text us (626)469-7790",
+    body: "From Snipits-Pasadena: To book for tomorrow and later: https://calendly.com/snipitspasadena   For today: https://local.snipits.com/pasadena-ca ** Don't reply to this number. Customer service - text us (626)469-7790",
     from: twilioNumber,
     to: caller,
   };
