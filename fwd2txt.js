@@ -23,6 +23,7 @@ app.all('/forward', (req, res) => {
   const caller = req.body.From;
   const twilioNumber = req.body.To;
   forwardToZenoti(caller, twilioNumber);
+  
 });
 
 
@@ -49,6 +50,7 @@ function forwardToZenoti(caller, twilioNumber){
   const accountSid = process.env.ACCOUNT_SID;
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
+  const regex = /^1(888|866|877|800)/g;
 
   const message = {
     body: "Cancelation request from customer phonenumber "+caller,
@@ -56,6 +58,10 @@ function forwardToZenoti(caller, twilioNumber){
     to: zenotiNumber,
   };
   console.log({message})
+  //add oly forward if it's not 800, 877, 866, 888 numbers or internationnal numbers
+  if(twilioNumber.match(regex)){
+    return null; 
+  }
   return client.messages.create(message).then()
     .catch(function(error) {
       if (error.code === 21614) {
@@ -63,6 +69,7 @@ function forwardToZenoti(caller, twilioNumber){
       }
     })
     .done(); 
+    
 }
 
 app.use((err, req, res, next) => {
