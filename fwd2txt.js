@@ -11,7 +11,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.all('/answer', (req, res) => {
   const caller = req.body.From;
-  const twilioNumber = req.body.To;
+  //const twilioNumber = req.body.To;
+  const twilioNumber = process.env.MSG_SERVICE_ID
+  
   sendSms(caller, twilioNumber);
 
   const r = new voiceResponse();
@@ -21,7 +23,8 @@ app.all('/answer', (req, res) => {
 
 app.all('/forward', (req, res) => {
   const caller = req.body.From;
-  const twilioNumber = req.body.To;
+  //const twilioNumber = req.body.To;
+  const twilioNumber = process.env.MSG_SERVICE_ID
   forwardToZenoti(caller, twilioNumber);
   
 });
