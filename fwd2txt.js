@@ -5,7 +5,9 @@ const voiceResponse = require('twilio').twiml.VoiceResponse;
 
 const app = express();
 const port = process.env.PORT || 3000;
-const zenotiNumber = '16264697790';
+// const zenotiNumber = '16264697790';
+const squareNumber = '16264697790'; //update this number on 9/30 midnight 
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -17,7 +19,8 @@ app.all('/answer', (req, res) => {
   sendSms(caller, twilioNumber);
 
   const r = new voiceResponse();
-  r.play({},'https://sepia-cobra-7528.twil.io/assets/Gilmore%20Ave%2050.mp3');
+  r.play({},'https://sepia-cobra-7528.twil.io/assets/text%20sent%20message.mp3');//push this out - 9/26 Great bear cut
+  // r.play({},'https://sepia-cobra-7528.twil.io/assets/Gilmore%20Ave%2050.mp3'); OLD F'
   res.send(r.toString());
 });
 
@@ -58,7 +61,8 @@ function forwardToZenoti(caller, twilioNumber){
   const message = {
     body: "Cancelation request from customer phonenumber "+caller,
     from: twilioNumber,
-    to: zenotiNumber,
+    // to: zenotiNumber,
+    to: squareNumber,
   };
   console.log({message})
   //add oly forward if it's not 800, 877, 866, 888 numbers or internationnal numbers
