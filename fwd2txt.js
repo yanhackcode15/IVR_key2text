@@ -6,7 +6,7 @@ const voiceResponse = require('twilio').twiml.VoiceResponse;
 const app = express();
 const port = process.env.PORT || 3000;
 // const zenotiNumber = '16264697790';
-const squareNumber = '16264697790'; //update this number on 9/30 midnight 
+const squareNumber = '18336275065'; //update this number on 9/30 midnight 
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -20,7 +20,6 @@ app.all('/answer', (req, res) => {
 
   const r = new voiceResponse();
   r.play({},'https://sepia-cobra-7528.twil.io/assets/text%20sent%20message.mp3');//push this out - 9/26 Great bear cut
-  // r.play({},'https://sepia-cobra-7528.twil.io/assets/Gilmore%20Ave%2050.mp3'); OLD F'
   res.send(r.toString());
 });
 
@@ -38,7 +37,8 @@ function sendSms(caller, twilioNumber) {
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
   const message = {
-    body: "From Snipits: Book, reschedule, or cancel here: https://bit.ly/booksnipits (account required).Don't reply. Text us at (626) 469-7790 for help",
+    // body: "From Snipits: Book, reschedule, or cancel here: https://bit.ly/booksnipits (account required).Don't reply. Text us at (626) 469-7790 for help",
+    body: "From Great Bear: Book, reschedule, or cancel here: https://www.thegreatbearcut.com. Don't reply. Text us at (833)627-5065 for questions",
     from: twilioNumber,
     to: caller,
   };
