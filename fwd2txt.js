@@ -27,7 +27,7 @@ app.all('/forward', (req, res) => {
   const caller = req.body.From;
   //const twilioNumber = req.body.To;
   const twilioNumber = process.env.MSG_SERVICE_ID
-  forwardToZenoti(caller, twilioNumber);
+  forwardToSquare(caller, twilioNumber);
   
 });
 
@@ -38,7 +38,7 @@ function sendSms(caller, twilioNumber) {
   const client = require('twilio')(accountSid, authToken);
   const message = {
     // body: "From Snipits: Book, reschedule, or cancel here: https://bit.ly/booksnipits (account required).Don't reply. Text us at (626) 469-7790 for help",
-    body: "From Great Bear: Book, reschedule, or cancel here: https://www.thegreatbearcut.com. Don't reply. Text us at (833)627-5065 for questions",
+    body: "From Great Bear: book at https://www.thegreatbearcut.com. Manage appt via SMS link to modify. Don't reply. Text us at (833)627-5065 for help",
     from: twilioNumber,
     to: caller,
   };
@@ -52,7 +52,7 @@ function sendSms(caller, twilioNumber) {
     .done();
 }
 
-function forwardToZenoti(caller, twilioNumber){
+function forwardToSquare(caller, twilioNumber){
   const accountSid = process.env.ACCOUNT_SID;
   const authToken = process.env.AUTH_TOKEN;
   const client = require('twilio')(accountSid, authToken);
